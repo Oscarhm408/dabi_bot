@@ -20,7 +20,11 @@ async def ping(ctx):
 
 @bot.command()
 async def hello(ctx):
-    await ctx.send("Choo choo! 🚅")
+    await ctx.send("Hello")
+    
+@bot.command()
+async def praise(ctx):
+    await ctx.send("Sorry, can't talk right now")
 
 
 bot.run(os.environ["DISCORD_TOKEN"])
