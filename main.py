@@ -26,11 +26,11 @@ async def hello(ctx):
     
 @bot.command()
 async def praise(ctx):
-    await ctx.send(random.choice(os.environ["praise_list"]))
+    await ctx.send(random.choice(json.loads(os.environ["praise_list"])))
     
 @bot.command()
 async def dabi(ctx):
-    await ctx.send(random.choice(os.environ["dabi_quotes"]))
+    await ctx.send(random.choice(json.loads(os.environ["dabi_quotes"])))
 
                    
 bot.run(os.environ["DISCORD_TOKEN"])
