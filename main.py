@@ -23,7 +23,7 @@ async def ping(ctx):
 
 @bot.command()
 async def hello(ctx):
-    await ctx.send(random.choice(list)
+    await ctx.send(random.choice(list))
 
 
 bot.run(os.environ["DISCORD_TOKEN"])
