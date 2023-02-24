@@ -10,6 +10,8 @@ intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix='!', intents=intents)
 
+print(random.choice(["1", "2"]))
+
 list = ["1", "2"]
 @bot.event
 async def on_ready():
