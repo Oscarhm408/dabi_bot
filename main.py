@@ -31,7 +31,5 @@ async def praise(ctx):
 async def dabi(ctx):
     await ctx.send(random.choice(os.environ["dabi_quotes"])
 
-
-
-
+                   
 bot.run(os.environ["DISCORD_TOKEN"])
