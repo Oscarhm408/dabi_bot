@@ -25,7 +25,13 @@ async def hello(ctx):
     
 @bot.command()
 async def praise(ctx):
-    await ctx.send("Sorry, can't talk right now")
+    await ctx.send(random.choice(praise_list))
+    
+@bot.command()
+async def dabi(ctx):
+    await ctx.send(random.choice(dabi_quotes))
+
+
 
 
 bot.run(os.environ["DISCORD_TOKEN"])
