@@ -64,11 +64,11 @@ async def hello(ctx):
     
 @bot.command()
 async def praise(ctx):
-    await ctx.send(random.choice(dabi_quotes))
+    await ctx.send(random.choice(praise_quotes))
     
 @bot.command()
 async def dabi(ctx):
-    await ctx.send(random.choice(praise_quotes))
+    await ctx.send(random.choice(dabi_quotes))
 
                    
 bot.run(os.environ["DISCORD_TOKEN"])
