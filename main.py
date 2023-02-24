@@ -1,7 +1,6 @@
 # This example requires the 'message_content' privileged intents
 
 import os
-import random 
 import discord
 from discord.ext import commands
 
@@ -21,15 +20,7 @@ async def ping(ctx):
 
 @bot.command()
 async def hello(ctx):
-    await ctx.send("Hello")
-    
-@bot.command()
-async def praise(ctx):
-    await ctx.send(random.choice(os.environ["praise_list"]))
-    
-@bot.command()
-async def dabi(ctx):
-    await ctx.send(random.choice(os.environ["dabi_quotes"])
+    await ctx.send("Choo choo! 🚅")
 
-                   
+
 bot.run(os.environ["DISCORD_TOKEN"])
