@@ -73,9 +73,5 @@ async def on_message(message):
     elif message.content.lower() == "!hello":
         await message.channel.send("Hello")
         
-    elif message.content.lower() == "!last message":
-        await self.history(limit=1).flatten())[0]
-   
-    last_message = message
                 
 client.run(os.environ["DISCORD_TOKEN"])
