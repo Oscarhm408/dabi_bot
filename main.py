@@ -25,30 +25,6 @@ dabi_quotes = [
     "Anyway, I will carry out the will of the hero killer.",
     "There's only one girl I've got my eye on, and her name is Rayne",
     "Sit on my face",
-]
-
-praise_quotes = [
-        "Anything for you, Princess",
-        "Behave yourself, Princess",
-        "Be a good girl for me, Princess",
-        "Give me all of you, Princess",
-        "yes princess you are the sexiest",
-        "keep talking to me like the pretty princess you are",
-        "mm i can't wait to see your body princess",
-        "good girl",
-        "fuuuck you're such a hot princess",
-        "Show your clean waxed pussy for me princess",
-        "I know its princess pink",
-        "I need that princess HEE HEE",
-        "where should I cum princess?",
-        "ah yes, princess's milk",
-        "go reach for your rose princess",
-        "I just can't control myself around you princess",
-        "Mmm princess, you're doing such a good job",
-        "Yeah, keep using that pretty mouth of yours just like that",
-        "Why is your face so hot princess? Do you feel okay?",
-        "I can't wait to rip those panties off you princess",
-]
 
 @client.event
 async def on_ready():
@@ -68,16 +44,16 @@ async def on_message(message):
         await message.channel.send(random.choice(dabi_quotes))
         
     if message.content.lower() == "!summon":
-        await message.channel.send(random.choice("Rayne, get your ass on fortnite.))
+        await message.channel.send("Rayne, get your ass on fortnite.)
     
     if message.content.lower() == "!praise":
-        await message.channel.send(random.choice(praise_list))
+        await message.channel.send("Sorry, can't do that right now")
  
     elif "jk" in message.content.lower():
         await message.channel.send("Unless?")
         
     elif message.content.startswith("!bot"):
-        await message.channel.send("bot")
+        await message.channel.send("yes im here")
 
     elif message.content.lower() == "!hello":
         await message.channel.send("Hello")
