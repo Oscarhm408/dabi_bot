@@ -1,11 +1,8 @@
-# This example requires the 'message_content' privileged intents
-
 import os
 import discord
 import requests
 import random
 import json
-
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -34,26 +31,42 @@ user_dict = {
     "Ra": "Rayne"
 }
 
-@client.event
-last_message = [message async for message in interaction.guild.get_channel(0).history(limit=1)]messages[0].content
 
 @client.event
 async def on_ready():
     print("I'm in")
     print(client.user)
 
+
 @client.event
-async def on_message(message): 
-    if message.author == client.user: 
-        return 
-    
+async def on_message(message):
+    if message.author == client.user:
+        return
+
+    elif message.content.lower() == "!me":
+        messages = [message async for message in message.channel.history(limit=5)]
+        last_message = messages[1].content
+        s = last_message.split(" ")
+        print(last_message)
+        print(s)
+        for word in s:
+            print(word.lower())
+            print(type(word))
+            if word.lower() in ["im", "i", "i'm", "idk", "idc"]:
+                print(True)
+                index = s.index(word)
+                phrase = (" ".join(s[index:]))
+                print(phrase)
+                await message.channel.send(f"me when {phrase}")
+
     elif message.content.lower() == "!jesus":
-        gif = requests.get("https://i.kym-cdn.com/photos/images/newsfeed/002/528/120/c3c.gif")
+        gif = requests.get(
+            "https://i.kym-cdn.com/photos/images/newsfeed/002/528/120/c3c.gif")
         await message.channel.send(gif)
-    
+
     elif message.content.lower() == "!dabi":
         await message.channel.send(random.choice(dabi_quotes))
-        
+
     elif message.content.lower().startswith("!summon"):
         raw_user = message.content.split(" ")[1]
         if raw_user[:2] == "os":
@@ -61,23 +74,20 @@ async def on_message(message):
         elif raw_user[:2] in user_dict:
             name = user_dict[raw_user[:2]]
         else:
-            name = raw_user                             
+            name = raw_user
         await message.channel.send(name + " , get your ass on fortnite")
-                                          
+
     elif message.content.lower() == "!praise":
         await message.channel.send("Sorry, can't do that right now")
- 
+
     elif "jk" in message.content.lower():
         await message.channel.send("Unless?")
-        
+
     elif message.content.startswith("!bot"):
         await message.channel.send("yes im here")
 
     elif message.content.lower() == "!hello":
         await message.channel.send("Hello")
-        
-    elif message.content.lower() == "!last":
-        await message.channel.send(last_message)
-    
-                
+
+
 client.run(os.environ["DISCORD_TOKEN"])
