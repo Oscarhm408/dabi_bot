@@ -1,15 +1,16 @@
 # This example requires the 'message_content' privileged intents
 
 import os
-import random 
 import discord
+import requests
+import random
 import json
-from discord.ext import commands
 
 
 intents = discord.Intents.default()
 intents.message_content = True
-bot = commands.Bot(command_prefix='!', intents=intents)
+
+client = discord.Client(intents=intents)
 
 dabi_quotes = [
     "I’ve seen you in pictures, but I gotta say you’re way grosser in person.",
@@ -49,26 +50,31 @@ praise_quotes = [
         "I can't wait to rip those panties off you princess",
 ]
 
-
-@bot.event
+@client.event
 async def on_ready():
-    print(f"Logged in as {bot.user}")
+    print("I'm in")
+    print(client.user)
 
-@bot.command()
-async def ping(ctx):
-    await ctx.send('pong')
-
-@bot.command()
-async def hello(ctx):
-    await ctx.send("Hello")
+@client.event
+async def on_message(message): 
+    if message.author == client.user: 
+        return 
     
-@bot.command()
-async def praise(ctx):
-    await ctx.send(random.choice(praise_quotes))
+    if message.content.lower() == "!dabi":
+        await message.channel.send(random.choice(dabi_quotes))
     
-@bot.command()
-async def dabi(ctx):
-    await ctx.send(random.choice(dabi_quotes))
+    if message.content.lower() == "!praise":
+        await message.channel.send(random.choice(praise_list))
+ 
+    elif "jk" in message.content.lower():
+        await message.channel.send("Unless?")
+        
+    elif message.content.startswith("!bot"):
+        await message.channel.send("bot")
 
-                   
-bot.run(os.environ["DISCORD_TOKEN"])
+    elif message.content.lower() == "!hello":
+        await message.channel.send("Hello")
+        
+
+                  
+client.run(os.environ["DISCORD_TOKEN"])
