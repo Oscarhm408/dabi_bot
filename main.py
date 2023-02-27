@@ -47,16 +47,10 @@ async def on_message(message):
         messages = [message async for message in message.channel.history(limit=5)]
         last_message = messages[1].content
         s = last_message.split(" ")
-        print(last_message)
-        print(s)
         for word in s:
-            print(word.lower())
-            print(type(word))
             if word.lower() in ["im", "i", "i'm", "idk", "idc"]:
-                print(True)
                 index = s.index(word)
                 phrase = (" ".join(s[index:]))
-                print(phrase)
                 await message.channel.send(f"me when {phrase}")
 
     elif message.content.lower() == "!jesus":
