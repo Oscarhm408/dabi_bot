@@ -34,6 +34,9 @@ user_dict = {
     "Ra": "Rayne"
 }
 
+last_message = [message async for message in interaction.guild.get_channel(0).history(limit=12)]
+messages[0].content
+
 @client.event
 async def on_ready():
     print("I'm in")
@@ -73,5 +76,10 @@ async def on_message(message):
     elif message.content.lower() == "!hello":
         await message.channel.send("Hello")
         
+    elif message.content.lower() == "!last":
+        last_message = [message async for message in interaction.guild.get_channel(0).history(limit=12)]
+messages[0].content
+        await message.channel.send(last_message)
+    
                 
 client.run(os.environ["DISCORD_TOKEN"])
