@@ -40,18 +40,18 @@ async def on_ready():
     print(client.user)
 
 @client.event
-async def on_message(message): 
+async def on_message(message):  
     if message.author == client.user: 
         return 
     
-    if message.content.lower() == "!jesus":
+    elif message.content.lower() == "!jesus":
         gif = requests.get("https://i.kym-cdn.com/photos/images/newsfeed/002/528/120/c3c.gif")
         await message.channel.send(gif)
     
-    if message.content.lower() == "!dabi":
+    elif message.content.lower() == "!dabi":
         await message.channel.send(random.choice(dabi_quotes))
         
-    if message.content.lower().startswith("!summon"):
+    elif message.content.lower().startswith("!summon"):
         raw_user = message.content.split(" ")[1]
         if raw_user[:2] == "os":
             await message.channel.send("Oscar, get your sexy ass on fortnite")
@@ -61,7 +61,7 @@ async def on_message(message):
             name = raw_user                             
         await message.channel.send(name + " , get your ass on fortnite")
                                           
-    if message.content.lower() == "!praise":
+    elif message.content.lower() == "!praise":
         await message.channel.send("Sorry, can't do that right now")
  
     elif "jk" in message.content.lower():
@@ -72,7 +72,10 @@ async def on_message(message):
 
     elif message.content.lower() == "!hello":
         await message.channel.send("Hello")
-      
-
-                  
+        
+    elif message.content.lower() == "!last message":
+        await message.channel.send(last_message)
+   
+    last_message = message
+                
 client.run(os.environ["DISCORD_TOKEN"])
