@@ -24,8 +24,16 @@ dabi_quotes = [
     "Heroes are forgettable. They try to save the world… but villains are the ones who change it.",
     "Anyway, I will carry out the will of the hero killer.",
     "There's only one girl I've got my eye on, and her name is Rayne",
-    "Sit on my face",
 ]
+
+user_dict = {
+    "ni": "Nina",
+    "ev": "Evan",
+    "ri": "Riri",
+    "ma": "Mari",
+    "Os": "Oscar",
+    "Ra": "Rayne"
+}
 
 @client.event
 async def on_ready():
@@ -44,9 +52,14 @@ async def on_message(message):
     if message.content.lower() == "!dabi":
         await message.channel.send(random.choice(dabi_quotes))
         
-    if message.content.lower() == "!summon":
-        await message.channel.send("Rayne, get your ass on fortnite.")
-    
+    if message.content.lower()startswith("!summon"):
+        raw_user = message.content.split(" ")[1]
+        if raw_user[:2] in user_dict:
+            name = user_dict[raw_user[:2]]
+        else:
+            name = raw_user                             
+        await message.channel.send(name + " , get your ass on fortnite")
+                                          
     if message.content.lower() == "!praise":
         await message.channel.send("Sorry, can't do that right now")
  
@@ -58,7 +71,7 @@ async def on_message(message):
 
     elif message.content.lower() == "!hello":
         await message.channel.send("Hello")
-        
+      
 
                   
 client.run(os.environ["DISCORD_TOKEN"])
