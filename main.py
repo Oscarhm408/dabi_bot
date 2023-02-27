@@ -34,7 +34,7 @@ user_dict = {
     "Ra": "Rayne"
 }
 
-last_message = [message async for message in interaction.guild.get_channel(0).history(limit=12)]
+last_message = [message async for message in interaction.guild.get_channel(0).history(limit=1)]
 messages[0].content
 
 @client.event
@@ -43,7 +43,10 @@ async def on_ready():
     print(client.user)
 
 @client.event
-async def on_message(message):  
+async def on_message(message): 
+    last_message = [message async for message in interaction.guild.get_channel(0).history(limit=12)]
+messages[0].content
+
     if message.author == client.user: 
         return 
     
@@ -77,8 +80,6 @@ async def on_message(message):
         await message.channel.send("Hello")
         
     elif message.content.lower() == "!last":
-        last_message = [message async for message in interaction.guild.get_channel(0).history(limit=12)]
-messages[0].content
         await message.channel.send(last_message)
     
                 
