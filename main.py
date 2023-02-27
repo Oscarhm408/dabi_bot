@@ -34,6 +34,7 @@ user_dict = {
     "Ra": "Rayne"
 }
 
+@client.event
 last_message = [message async for message in interaction.guild.get_channel(0).history(limit=1)]
 messages[0].content
 
