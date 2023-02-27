@@ -44,9 +44,6 @@ async def on_ready():
 
 @client.event
 async def on_message(message): 
-    last_message = [message async for message in interaction.guild.get_channel(0).history(limit=12)]
-messages[0].content
-
     if message.author == client.user: 
         return 
     
