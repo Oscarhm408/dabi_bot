@@ -25,6 +25,7 @@ dabi_quotes = [
     "Anyway, I will carry out the will of the hero killer.",
     "There's only one girl I've got my eye on, and her name is Rayne",
     "Sit on my face",
+]
 
 @client.event
 async def on_ready():
