@@ -31,7 +31,6 @@ user_dict = {
     "ev": "Evan",
     "ri": "Riri",
     "ma": "Mari",
-    "Os": "Oscar",
     "Ra": "Rayne"
 }
 
@@ -54,7 +53,9 @@ async def on_message(message):
         
     if message.content.lower().startswith("!summon"):
         raw_user = message.content.split(" ")[1]
-        if raw_user[:2] in user_dict:
+        if raw_user[:2] == "os"
+            await message.channel.send("Oscar, get your sexy ass on fortnite")
+        elif raw_user[:2] in user_dict:
             name = user_dict[raw_user[:2]]
         else:
             name = raw_user                             
