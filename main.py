@@ -45,7 +45,7 @@ async def on_message(message):
         await message.channel.send(random.choice(dabi_quotes))
         
     if message.content.lower() == "!summon":
-        await message.channel.send("Rayne, get your ass on fortnite.)
+        await message.channel.send("Rayne, get your ass on fortnite.")
     
     if message.content.lower() == "!praise":
         await message.channel.send("Sorry, can't do that right now")
