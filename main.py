@@ -35,8 +35,7 @@ user_dict = {
 }
 
 @client.event
-last_message = [message async for message in interaction.guild.get_channel(0).history(limit=1)]
-messages[0].content
+last_message = [message async for message in interaction.guild.get_channel(0).history(limit=1)]messages[0].content
 
 @client.event
 async def on_ready():
