@@ -48,7 +48,7 @@ async def on_message(message):
         last_message = messages[1].content
         s = last_message.split(" ")
         for word in s:
-            if word.lower() in ["im", "i", "i'm", "idk", "idc"]:
+            if word.lower() in ["im", "i", "i'm", "idk", "idc", "ive", "i've"]:
                 index = s.index(word)
                 phrase = (" ".join(s[index:]))
                 await message.channel.send(f"me when {phrase}")
