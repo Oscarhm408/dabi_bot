@@ -59,7 +59,8 @@ async def on_message(message):
         await message.channel.send(gif)
 
     elif message.content.lower() == "!dabi":
-        await message.channel.send(random.choice(dabi_quotes))
+        await message.channel.send("Good girl.")
+#         await message.channel.send(random.choice(dabi_quotes))
 
     elif message.content.lower().startswith("!summon"):
         raw_user = message.content.split(" ")[1]
