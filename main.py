@@ -54,9 +54,7 @@ async def on_message(message):
                 await message.channel.send(f"me when {phrase}")
 
     elif message.content.lower() == "!jesus":
-        gif = requests.get(
-            "https://i.kym-cdn.com/photos/images/newsfeed/002/528/120/c3c.gif")
-        await message.channel.send(gif)
+        await message.channel.send(file=discord.File("jesus.gif"))
 
     elif message.content.lower() == "!dabi":
         await message.channel.send(random.choice(dabi_quotes))
