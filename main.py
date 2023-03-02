@@ -98,7 +98,7 @@ async def on_message(message):
     elif message.content.lower() == "!hello":
         await message.channel.send("Hello")
 
-    elif message.content.startswith("hi dabi"):
+    elif message.content.lower().startswith("hi dabi"):
           async with message.channel.typing():
               type_time = random.uniform(0.5, 4)
               await asyncio.sleep(type_time)
