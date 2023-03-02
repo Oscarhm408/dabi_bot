@@ -28,7 +28,7 @@ user_dict = {
     "ev": "Evan",
     "ri": "Riri",
     "ma": "Mari",
-    "Ra": "Rayne"
+    "ra": "Rayne"
 }
 
 
