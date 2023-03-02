@@ -3,6 +3,7 @@ import discord
 import requests
 import random
 import json
+import asyncio
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -28,10 +29,20 @@ user_dict = {
     "ev": "Evan",
     "ri": "Riri",
     "ma": "Mari",
-    "ra": "Rayne"
+    "Ra": "Rayne"
 }
 
-
+dabi_response = [
+    "hey what's up",
+    "yes im here",
+    "sorry i was a lil nervous, hi",
+    "what do you want",
+    "hey wyding",
+    "miss u",
+    "hop on fortnite later?",
+    "hi, watching anime rn",
+    "sorry just woke up haha hi",
+]
 @client.event
 async def on_ready():
     print("I'm in")
@@ -47,17 +58,20 @@ async def on_message(message):
         messages = [message async for message in message.channel.history(limit=5)]
         last_message = messages[1].content
         s = last_message.split(" ")
+        print(last_message)
+        print(s)
         for word in s:
-            if word.lower() in ["im", "i", "i'm", "idk", "idc", "ive", "i've"]:
+            print(word.lower())
+            print(type(word))
+            if word.lower() in ["im", "i", "i'm", "idk", "idc"]:
+                print(True)
                 index = s.index(word)
                 phrase = (" ".join(s[index:]))
+                print(phrase)
                 await message.channel.send(f"me when {phrase}")
 
     elif message.content.lower() == "!jesus":
         await message.channel.send(file=discord.File("jesus.gif"))
-        
-    elif "sex" in message.content.lower():
-        await message.channel.send("Sex?")
 
     elif message.content.lower() == "!dabi":
         await message.channel.send(random.choice(dabi_quotes))
@@ -83,6 +97,12 @@ async def on_message(message):
 
     elif message.content.lower() == "!hello":
         await message.channel.send("Hello")
+
+    elif message.content.startswith("hi dabi"):
+          async with message.channel.typing():
+              type_time = random.uniform(0.5, 4)
+              await asyncio.sleep(type_time)
+              await message.channel.send(random.choice(dabi_response))
 
 
 client.run(os.environ["DISCORD_TOKEN"])
