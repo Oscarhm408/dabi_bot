@@ -74,7 +74,7 @@ async def on_message(message):
     elif message.content.lower() == "!praise":
         await message.channel.send("Sorry, can't do that right now")
 
-    elif " jk" in message.content.lower():
+    elif "jk" in message.content.lower():
         await message.channel.send("Unless?")
 
     elif message.content.startswith("!bot"):
