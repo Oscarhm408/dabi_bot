@@ -21,11 +21,12 @@ dabi_quotes = [
     "It’s better to have a small group of experienced elites.",
     "Heroes are forgettable. They try to save the world… but villains are the ones who change it.",
     "Anyway, I will carry out the will of the hero killer.",
-    "There's only one girl I've got my eye on, and her name is Rayne",
+    "There's only one girl I've got my eye on, but she belongs to Oscar",
 ]
 
 user_dict = {
-    "ni": "Nina",
+    "os": "Oscar", 
+    "ni": "Nina", 
     "ev": "Evan",
     "ri": "Riri",
     "ma": "Mari",
@@ -53,21 +54,15 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
-
+        
     elif message.content.lower() == "!me":
         messages = [message async for message in message.channel.history(limit=5)]
         last_message = messages[1].content
         s = last_message.split(" ")
-        print(last_message)
-        print(s)
         for word in s:
-            print(word.lower())
-            print(type(word))
             if word.lower() in ["im", "i", "i'm", "idk", "idc"]:
-                print(True)
                 index = s.index(word)
                 phrase = (" ".join(s[index:]))
-                print(phrase)
                 await message.channel.send(f"me when {phrase}")
 
     elif message.content.lower() == "!jesus":
@@ -103,6 +98,8 @@ async def on_message(message):
               type_time = random.uniform(0.5, 4)
               await asyncio.sleep(type_time)
               await message.channel.send(random.choice(dabi_response))
-
+              
+    elif message.content.lower() in ["sideeye","side eye"]:
+        await message.channel.send("<:sideeye:1083187945260990514>")
 
 client.run(os.environ["DISCORD_TOKEN"])
